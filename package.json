@@ -4,7 +4,8 @@
   "description": "\"# Angular-II\"",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "cd client && ng build --prod && cd.. && node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,13 @@
   },
   "homepage": "https://github.com/Maheswariviji/Angular-II#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "express": "^4.15.4",
-    "mongoose": "^4.11.7"
+    "jsonwebtoken": "^7.4.3",
+    "mongoose": "^4.11.7",
+    "morgan": "^1.8.2"
   }
 }

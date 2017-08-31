@@ -1,0 +1,74 @@
+<h1 class="page-header">CRUD</h1>
+
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<button type="button" name="button" class="btn btn-primary" *ngIf="!newPost" (click)="newBlogForm()"><span class="glyphicon glyphicon-plus"></span>New Item</button>
+
+<!-- Reload Button -->
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-info" *ngIf="!newPost" (click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
+
+<br />
+<br />
+
+<form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
+  <!-- Title Input -->
+  <div class="form-group">
+    <label for="title">Item</label>
+    <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
+      <!-- Title Input -->
+      <input type="text" [(ngModel)]="data.title" name="title" class="form-control" placeholder=" Title" autocomplete="off" formControlName="title" />
+      <!-- Validation -->
+      <ul class="help-block">
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
+        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Body Input -->
+  <div class="form-group">
+    <label for="body">Description</label>
+    <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
+      <!-- Body Input -->
+      <textarea [(ngModel)]="data.body" name="body" rows="8" cols="80" placeholder="Desc...." class="form-control" formControlName="body"></textarea>
+      <!-- Validation -->
+      <ul class="help-block">
+        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Go Back Button -->
+  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
+  <!-- Submit Button -->
+  <button *ngIf="!sbt" [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
+
+  <button *ngIf="!updatebtn"  [disabled] ="processing" type="button" (click)="update()" name="button" class="btn btn-info">Update</button>
+
+</form>
+<div *ngIf="availableitem">
+<table class="table table-striped table-hover ">
+	<thead>
+    <tr>
+      <!-- <th>#</th> -->
+		<th>Item Title</th>
+		<th>Description</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let i of items">
+	<!-- <td>{{i.id=$index+1}}</td> -->
+	<td>{{ i.title }}</td>
+	<td>{{ i.body }}</td>
+	<td><button class="btn btn-primary btn-sm" (click)="Edit(i)"><span class="glyphicon glyphicon-edit"></span></button></td>
+	<td><button class="btn btn-danger btn-sm" (click)="Delete(i)"><span class="glyphicon glyphicon-trash"></span></button></td>
+	</tr>
+	</tbody>
+</table>
+</div>
