@@ -17,7 +17,7 @@ messageClass;
   previousUrl;
   constructor(private formBuilder: FormBuilder,
     public authService: AuthService,
-    private router: Router,
+    public router: Router,
     private authGuard: AuthGuard
     ) {
 this.createForm();

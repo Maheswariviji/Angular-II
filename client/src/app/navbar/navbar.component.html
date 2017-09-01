@@ -13,7 +13,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a *ngIf="!authService.loggedIn()" routerLink="/">Home</a></li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a  *ngIf="authService.loggedIn()"routerLink="/chat">Chat</a></li>
-                        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a  *ngIf="authService.loggedIn()"routerLink="/dashboard">CRUD</a></li>
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a  *ngIf="authService.loggedIn()"routerLink="/dashboard">CRUD</a></li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a *ngIf="!authService.loggedIn()" routerLink="/login">Login</a></li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a  *ngIf="!authService.loggedIn()" routerLink="/register">Register</a></li>
             <li><a *ngIf="authService.loggedIn()"  (click)="onLogoutClick()">Logout</a></li>

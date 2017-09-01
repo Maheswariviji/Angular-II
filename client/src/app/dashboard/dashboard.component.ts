@@ -26,7 +26,7 @@ messageClass;
   constructor(private formBuilder: FormBuilder,
     public authService: AuthService,
     private crudService: CrudserviceService,
-     private router: Router
+     public router: Router
   ) {
     this.create(); // Create new blog form on start up
     }
@@ -151,12 +151,13 @@ console.log(this.data);
         this.processing = false; // Unlock form fields
       } else {
         this.messageClass = 'alert alert-success'; // Set success bootstrap class
-        this.message = data.message; // Set success message
+        this.message = data.message; 
+        this.getAllBlogs();// Set success message
         // After two seconds, navigate back to blog page
-        setTimeout(() => {
-          // this.router.navigate(['/dashboard']); // Navigate back to route page
-          window.location.reload(); 
-        }, 2000);
+        // setTimeout(() => {
+        //   this.router.navigate(['/dashboard']); // Navigate back to route page
+        //  // window.location.reload(); 
+        // }, 2000);
       }
     });
   }
@@ -171,11 +172,14 @@ console.log(this.data);
         this.message = data.message; // Return error message
       } else {
         this.messageClass = 'alert alert-success'; // Return bootstrap success class
-        this.message = data.message; // Return success message
+        this.message = data.message;
+          this.getAllBlogs();
+         // Return success message
         // After two second timeout, route to blog page
-        setTimeout(() => {
-          window.location.reload(); // Route users to blog page
-        }, 1000);
+        // setTimeout(() => {
+        //   this.router.navigate(['/dashboard']);
+        //   // window.location.reload(); // Route users to blog page
+        // }, 1000);
       }
     });
   

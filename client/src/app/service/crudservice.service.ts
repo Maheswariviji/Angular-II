@@ -6,7 +6,7 @@ import { AuthService } from '../service/auth.service';
 @Injectable()
 export class CrudserviceService {
 
-domain="http://localhost:4444";
+domain="";
 
 options;
   constructor( private authService: AuthService,

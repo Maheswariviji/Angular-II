@@ -7,12 +7,12 @@ import { tokenNotExpired } from 'angular2-jwt';
 @Injectable()
 export class AuthService {
 
-domain="http://localhost:4444";
+domain="";
  authToken;
   user;
   options;
 
-  constructor( private http:Http) { }
+  constructor( public http:Http) { }
 
    registerUser(user) {
     return this.http.post(this.domain + '/reg/register', user).map(res => res.json());
