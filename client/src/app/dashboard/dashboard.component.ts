@@ -154,10 +154,10 @@ console.log(this.data);
         this.message = data.message; 
         this.getAllBlogs();// Set success message
         // After two seconds, navigate back to blog page
-        // setTimeout(() => {
-        //   this.router.navigate(['/dashboard']); // Navigate back to route page
-        //  // window.location.reload(); 
-        // }, 2000);
+        setTimeout(() => {
+          // this.router.navigate(['/dashboard']); // Navigate back to route page
+         window.location.reload(); 
+        }, 1000);
       }
     });
   }
@@ -176,10 +176,10 @@ console.log(this.data);
           this.getAllBlogs();
          // Return success message
         // After two second timeout, route to blog page
-        // setTimeout(() => {
-        //   this.router.navigate(['/dashboard']);
-        //   // window.location.reload(); // Route users to blog page
-        // }, 1000);
+        setTimeout(() => {
+      //   //   this.router.navigate(['/dashboard']);
+          window.location.reload(); // Route users to blog page
+        }, 1000);
       }
     });
   
